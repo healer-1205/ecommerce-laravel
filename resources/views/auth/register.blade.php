@@ -50,32 +50,25 @@
 									<div class="form-body">
 										<form class="row g-3" method="POST" action="{{ route('register') }}">
 											@csrf
-											<div class="col-sm-6">
-												<label for="inputFirstName" class="form-label">First Name</label>
-												<input type="email" class="form-control" id="inputFirstName" placeholder="Jhon">
-											</div>
-											<div class="col-sm-6">
-												<label for="inputLastName" class="form-label">Last Name</label>
-												<input type="email" class="form-control" id="inputLastName" placeholder="Deo">
+											<div class="col-12">
+												<label for="inputName" class="form-label">Name</label>
+												<input type="text" name="name" class="form-control" id="inputName" placeholder="Healer" require>
 											</div>
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com">
+												<input type="email" name="email" class="form-control" id="inputEmailAddress" placeholder="example@user.com" require>
 											</div>
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">Password</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
 												</div>
 											</div>
 											<div class="col-12">
-												<label for="inputSelectCountry" class="form-label">Country</label>
-												<select class="form-select" id="inputSelectCountry" aria-label="Default select example">
-													<option selected>India</option>
-													<option value="1">United Kingdom</option>
-													<option value="2">America</option>
-													<option value="3">Dubai</option>
-												</select>
+												<label for="inputConfirmPassword" class="form-label">Confirm Password</label>
+												<div class="input-group" id="show_hide_password">
+													<input type="password" name="password_confirmation" class="form-control border-end-0" id="inputConfirmPassword" value="12345678" placeholder="Enter Password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+												</div>
 											</div>
 											<div class="col-12">
 												<div class="form-check form-switch">
