@@ -57,7 +57,9 @@
 											@csrf
 											<div class="col-12">
 												<label for="inputEmailAddress" class="form-label">Email Address</label>
-												<input type="email" class="form-control {{ Session::get('email_invalid') ? 'is-invalid' : '' }}" id="inputEmailAddress" placeholder="Email Address" name="email">
+												<input type="email" 
+													class="form-control {{ Session::get('email_invalid') ? 'is-invalid' : '' }}" 
+													id="inputEmailAddress" placeholder="Email Address" name="email">
 												@if (Session::has('email_invalid'))
 												<small style="color:red"> {{ Session::get('email_invalid') }}</small>
 												@endif
@@ -65,7 +67,10 @@
 											<div class="col-12">
 												<label for="inputChoosePassword" class="form-label">Enter Password</label>
 												<div class="input-group" id="show_hide_password">
-													<input type="password" class="form-control border-end-0  {{ Session::get('password_invalid') ? 'is-invalid' : '' }}" id="inputChoosePassword" value="12345678" placeholder="Enter Password" name="password"> <a href="javascript:;" class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
+													<input type="password" class="form-control border-end-0  {{ Session::get('password_invalid') ? 'is-invalid' : '' }}" id="inputChoosePassword" value="12345678" placeholder="Enter Password" name="password"> 
+													<a href="javascript:;" class="input-group-text bg-transparent">
+														<i class='bx bx-hide'></i>
+													</a>
 												</div>
 												@if (Session::has('password_invalid'))
 												<small style="color:red"> {{ Session::get('password_invalid') }}</small>
