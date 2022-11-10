@@ -42,28 +42,12 @@
 			</div>
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
-				<li>
-					<a href="javascript:;" class="has-arrow">
+				<li class={{$selected == "Dashboard" ? "mm-active" : ""}}>
+					<a href="/admin/dashboard">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
 					</a>
-					<ul>
-						<li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
-						</li>
-						<li> <a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>eCommerce</a>
-						</li>
-						<li> <a href="dashboard-sales.html"><i class="bx bx-right-arrow-alt"></i>Sales</a>
-						</li>
-						<li> <a href="dashboard-analytics.html"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
-						</li>
-						<li> <a href="dashboard-alternate.html"><i class="bx bx-right-arrow-alt"></i>Alternate</a>
-						</li>
-						<li> <a href="dashboard-digital-marketing.html"><i class="bx bx-right-arrow-alt"></i>Digital Marketing</a>
-						</li>
-						<li> <a href="dashboard-human-resources.html"><i class="bx bx-right-arrow-alt"></i>Human Resources</a>
-						</li>
-					</ul>
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -251,8 +235,8 @@
 						</li>
 					</ul>
 				</li>
-				<li>
-					<a href="user-profile.html">
+				<li class={{$selected == "Profile" ? "mm-active" : ""}}>
+					<a href="/admin/profile">
 						<div class="parent-icon"><i class="bx bx-user-circle"></i>
 						</div>
 						<div class="menu-title">User Profile</div>
@@ -695,7 +679,7 @@
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item" href="/profile"><i class="bx bx-user"></i><span>Profile</span></a>
+							<li><a class="dropdown-item" href="/admin/profile"><i class="bx bx-user"></i><span>Profile</span></a>
 							</li>
 							<li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
 							</li>
