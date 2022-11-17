@@ -38,10 +38,13 @@ class GoogleController extends Controller
                 $saveUser = User::where('email', $user->getEmail())->first();
             }
 
-
             Auth::loginUsingId($saveUser->id);
 
-            return redirect()->route('dashboard');
+            if (Auth::user()->role == "Admin") {
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('user.dashboard');
+            }
         } catch (\Throwable $th) {
             throw $th;
         }

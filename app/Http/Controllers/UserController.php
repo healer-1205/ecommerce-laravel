@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
-class ProfileController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         return view("admin.profile", ['selected' => 'Profile']);
@@ -34,7 +37,7 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
     }
 
     /**
@@ -68,7 +71,15 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (Auth::user()->role == "Admin") {
+            User::where('id', Auth::id())->update([
+                'name' => $request->name,
+                'email' => Auth::user()->email,
+                'password' => $request->password,
+                'role' => 'Admin'
+            ]);
+        }
+        return redirect('/admin/users')->with('success', true);
     }
 
     /**

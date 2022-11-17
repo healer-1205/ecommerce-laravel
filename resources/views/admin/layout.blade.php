@@ -236,7 +236,7 @@
 					</ul>
 				</li>
 				<li class={{$selected == "Profile" ? "mm-active" : ""}}>
-					<a href="/admin/profile">
+					<a href="{{route('admin.users.index')}}">
 						<div class="parent-icon"><i class="bx bx-user-circle"></i>
 						</div>
 						<div class="menu-title">User Profile</div>
@@ -679,7 +679,7 @@
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item" href="/admin/profile"><i class="bx bx-user"></i><span>Profile</span></a>
+							<li><a class="dropdown-item" href="{{route('admin.users.index')}}"><i class="bx bx-user"></i><span>Profile</span></a>
 							</li>
 							<li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
 							</li>

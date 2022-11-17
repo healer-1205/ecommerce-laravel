@@ -68,52 +68,48 @@
 				<div class="col-lg-8">
 					<div class="card">
 						<div class="card-body">
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Full Name</h6>
+							<form action="{{route('admin.users.update', auth()->user()->id)}}" method="POST">
+								@csrf
+								@method('PATCH')
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Full Name</h6>
+									</div>
+									<div class="col-sm-9">
+										<input type="text" name="name" class="form-control" value="{{auth()->user()->name}}" required />
+									</div>
 								</div>
-								<div class="col-sm-9">
-									<input type="text" name="name" class="form-control" value="{{auth()->user()->name}}" required />
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Email</h6>
+									</div>
+									<div class="col-sm-9">
+										<input type="email" name="email" class="form-control" value="{{auth()->user()->email}}" disabled />
+									</div>
 								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Email</h6>
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Password</h6>
+									</div>
+									<div class="col-sm-9">
+										<input type="password" name="password" class="form-control" value="" required />
+									</div>
 								</div>
-								<div class="col-sm-9">
-									<input type="email" name="email" class="form-control" value="{{auth()->user()->email}}" required />
+								<div class="row mb-3">
+									<div class="col-sm-3">
+										<h6 class="mb-0">Password Confirm</h6>
+									</div>
+									<div class="col-sm-9">
+										<input type="password" class="form-control" value="" required />
+									</div>
 								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Phone</h6>
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-9">
+										<input type="submit" class="btn btn-light px-4" value="Save Changes" />
+									</div>
 								</div>
-								<div class="col-sm-9">
-									<input type="text" class="form-control" value="(239) 816-9029" />
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Mobile</h6>
-								</div>
-								<div class="col-sm-9">
-									<input type="text" class="form-control" value="(320) 380-4539" />
-								</div>
-							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Address</h6>
-								</div>
-								<div class="col-sm-9">
-									<input type="text" class="form-control" value="Bay Area, San Francisco, CA" />
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-3"></div>
-								<div class="col-sm-9">
-									<input type="button" class="btn btn-light px-4" value="Save Changes" />
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 					<div class="row">

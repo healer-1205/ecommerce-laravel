@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('role', ['Admin', 'User'])->default('User');
+            $table->string('avatar')->nullable();
             $table->string('shipping_address')->nullable();
             $table->string('ip')->nullable();
             $table->string('country')->nullable();
