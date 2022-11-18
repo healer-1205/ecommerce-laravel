@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginResponse;
 use App\Models\User;
 use Stevebauman\Location\Facades\Location;
 use Jenssegers\Agent\Facades\Agent;
@@ -25,7 +26,17 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse
+        {
+            public function toResponse($request)
+            {
+                $user = User::where('email', $request->email)->first();
+                if ($user->role === "Admin") {
+                    return redirect('/admin/dashboard');
+                }
+                return redirect('/user/dashboard');
+            }
+        });
     }
 
     /**
