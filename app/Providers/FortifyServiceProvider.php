@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use App\Models\User;
+use Stevebauman\Location\Facades\Location;
+use Jenssegers\Agent\Facades\Agent;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -74,11 +76,17 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
-
-            if (
-                $user &&
-                Hash::check($request->password, $user->password)
-            ) {
+            if ($user && Hash::check($request->password, $user->password)) {
+                $ip = request()->ip(); // client IP
+                $currentUserInfo = Location::get($ip); // client country
+                $device = Agent::device(); // client device
+                if ($currentUserInfo) {
+                    $user->update([
+                        'ip' => $ip,
+                        'country' => $currentUserInfo->countryName,
+                        'device' => $device
+                    ]);
+                }
                 return $user;
             } else {
                 if (!$user) {
