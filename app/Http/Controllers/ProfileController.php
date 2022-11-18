@@ -17,7 +17,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = User::find(Auth::id());
-        return view("admin.profile", ['selected' => 'Profiles', 'user' => $user, 'success' => true]);
+        return view("admin.profile", ['selected' => 'Profiles', 'user' => $user]);
     }
 
     /**
@@ -73,7 +73,7 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         if ($request->password != $request->confirm_password) {
-            return redirect('/admin/profile')->with('invalid', 'Invalid Password');
+            return redirect('/admin/profile')->with('invalid', 'Password and Confirm Password is not same.');
         }
         if (Auth::user()->role == "Admin") {
             User::where('id', Auth::id())->update([

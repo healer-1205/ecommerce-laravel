@@ -69,7 +69,7 @@
 									<input type="password" name="confirm_password" class="form-control" id="confirm_password" value=""
 										required />
 									@if (Session::has('invalid'))
-									<small class="text-danger" id="wrong_password">Password and Confirm Password isn't same.</small>
+									<small class="text-danger" id="wrong_password">{{ Session::get('invalid') }}</small>
 									@endif
 								</div>
 							</div>
