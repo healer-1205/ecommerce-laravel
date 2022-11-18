@@ -60,7 +60,7 @@
 					</a>
 				</li>
 				<li class={{$selected == "Products" ? "mm-active" : ""}}>
-					<a href="{{route('admin.users.index')}}">
+					<a href="{{route('admin.products.index')}}">
 						<div class="parent-icon"><i class="bx bx-gift"></i>
 						</div>
 						<div class="menu-title">Products</div>
