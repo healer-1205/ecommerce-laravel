@@ -17,7 +17,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view("admin.users", ['selected' => 'Users', 'users' => $users]);
+        return view("admin.users.index", ['selected' => 'Users', 'users' => $users]);
     }
 
     /**
@@ -80,7 +80,7 @@ class UserController extends Controller
                 'role' => 'Admin'
             ]);
         }
-        return redirect('/admin/users')->with('success', true);
+        return redirect('/admin/users/index')->with('success', true);
     }
 
     /**

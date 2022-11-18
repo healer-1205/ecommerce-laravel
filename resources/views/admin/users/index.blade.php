@@ -13,7 +13,7 @@
 		</nav>
 	</div>
 	<div class="ms-auto">
-		<button type="button" class="btn btn-primary px-5">Add</button>
+		<a href="{{route('admin.users.create')}}"><button type="button" class="btn btn-primary px-5">Add</button></a>
 	</div>
 </div>
 
@@ -54,9 +54,9 @@
 						<td>
 							<div class="rox">
 								<div class="col text-center">
-									<i class='bx bx-pencil me-0'></i>
-									<i class='bx bx-trash me-0'></i>
-									<i class='bx bx-search me-0'></i>
+									<a href="{{route('admin.users.edit', $user->id)}}"><i class='bx bx-pencil me-0'></i></a>
+									<a href="{{route('admin.users.show', $user->id)}}"><i class='bx bx-trash me-0'></i></a>
+									<a href="{{route('admin.users.destroy', $user->id)}}"><i class='bx bx-show me-0'></i></a>
 								</div>
 							</div>
 						</td>
