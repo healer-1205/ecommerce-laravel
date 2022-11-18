@@ -24,7 +24,7 @@
 												<img class="me-2" src="{{ asset('images/icons/search.svg')}}" width="16" alt="Image Description">
 												<span>Sign in with Google</span>
 											</span>
-										</a> <a href="javascript:;" class="btn btn-light"><i class="bx bxl-facebook"></i>Sign in with Facebook</a>
+										</a>
 									</div>
 									<div class="login-separater text-center mb-4"> <span>OR SIGN IN WITH EMAIL</span>
 										<hr />

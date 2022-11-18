@@ -5,6 +5,8 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	{{-- csrf token --}}
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<!--favicon-->
 	<link rel="icon" href="{{ asset('images/favicon-32x32.png')}}" type="image/png" />
 	<!--plugins-->
@@ -12,6 +14,7 @@
 	<link href="{{ asset('plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
 	<link href="{{ asset('plugins/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet" />
 	<link href="{{ asset('plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
+	<link href="{{ asset('plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
 	<!-- loader-->
 	<link href="{{ asset('css/pace.min.css')}}" rel="stylesheet" />
 	<script src="{{ asset('js/pace.min.js')}}"></script>
@@ -43,10 +46,17 @@
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
 				<li class={{$selected == "Dashboard" ? "mm-active" : ""}}>
-					<a href="/admin/dashboard">
+					<a href="{{route('admin.dashboard')}}">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
+					</a>
+				</li>
+				<li class={{$selected == "Users" ? "mm-active" : ""}}>
+					<a href="{{route('admin.users.index')}}">
+						<div class="parent-icon"><i class="bx bx-user-circle"></i>
+						</div>
+						<div class="menu-title">Users</div>
 					</a>
 				</li>
 				<li>
@@ -71,14 +81,6 @@
 						<li> <a href="app-fullcalender.html"><i class="bx bx-right-arrow-alt"></i>Calendar</a>
 						</li>
 					</ul>
-				</li>
-				<li class="menu-label">UI Elements</li>
-				<li>
-					<a href="widgets.html">
-						<div class="parent-icon"><i class='bx bx-cookie'></i>
-						</div>
-						<div class="menu-title">Widgets</div>
-					</a>
 				</li>
 				<li>
 					<a href="javascript:;" class="has-arrow">
@@ -223,24 +225,22 @@
 						</li>
 						<li> <a href="authentication-signup.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign Up</a>
 						</li>
-						<li> <a href="authentication-signin-with-header-footer.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign In with Header & Footer</a>
+						<li> <a href="authentication-signin-with-header-footer.html" target="_blank"><i
+									class="bx bx-right-arrow-alt"></i>Sign In with Header & Footer</a>
 						</li>
-						<li> <a href="authentication-signup-with-header-footer.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Sign Up with Header & Footer</a>
+						<li> <a href="authentication-signup-with-header-footer.html" target="_blank"><i
+									class="bx bx-right-arrow-alt"></i>Sign Up with Header & Footer</a>
 						</li>
-						<li> <a href="authentication-forgot-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Forgot Password</a>
+						<li> <a href="authentication-forgot-password.html" target="_blank"><i
+									class="bx bx-right-arrow-alt"></i>Forgot Password</a>
 						</li>
-						<li> <a href="authentication-reset-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Reset Password</a>
+						<li> <a href="authentication-reset-password.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Reset
+								Password</a>
 						</li>
-						<li> <a href="authentication-lock-screen.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Lock Screen</a>
+						<li> <a href="authentication-lock-screen.html" target="_blank"><i class="bx bx-right-arrow-alt"></i>Lock
+								Screen</a>
 						</li>
 					</ul>
-				</li>
-				<li class={{$selected == "Profile" ? "mm-active" : ""}}>
-					<a href="{{route('admin.users.index')}}">
-						<div class="parent-icon"><i class="bx bx-user-circle"></i>
-						</div>
-						<div class="menu-title">User Profile</div>
-					</a>
 				</li>
 				<li>
 					<a href="timeline.html">
@@ -355,7 +355,8 @@
 					</div>
 					<div class="search-bar flex-grow-1">
 						<div class="position-relative search-bar-box">
-							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
+							<input type="text" class="form-control search-control" placeholder="Type to search..."> <span
+								class="position-absolute top-50 search-show translate-middle-y"><i class='bx bx-search'></i></span>
 							<span class="position-absolute top-50 search-close translate-middle-y"><i class='bx bx-x'></i></span>
 						</div>
 					</div>
@@ -366,7 +367,8 @@
 								</a>
 							</li>
 							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-category'></i>
+								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> <i class='bx bx-category'></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-end">
 									<div class="row row-cols-3 g-3 p-3">
@@ -404,7 +406,8 @@
 								</div>
 							</li>
 							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
+								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
 									<i class='bx bx-bell'></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-end">
@@ -464,7 +467,8 @@
 												<div class="notify"><i class="bx bx-home-circle"></i>
 												</div>
 												<div class="flex-grow-1">
-													<h6 class="msg-name">New Product Approved <span class="msg-time float-end">2 hrs ago</span></h6>
+													<h6 class="msg-name">New Product Approved <span class="msg-time float-end">2 hrs ago</span>
+													</h6>
 													<p class="msg-info">Your new product has approved</p>
 												</div>
 											</div>
@@ -520,7 +524,8 @@
 								</div>
 							</li>
 							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
+								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
 									<i class='bx bx-comment'></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-end">
@@ -672,20 +677,24 @@
 						</ul>
 					</div>
 					<div class="user-box dropdown">
-						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
 							<img src="{{ asset('images/avatars/avatar-2.png')}}" class="user-img" alt="user avatar">
 							<div class="user-info ps-3">
 								<p class="user-name mb-0">{{ auth()->user()->name }}</p>
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item" href="{{route('admin.users.index')}}"><i class="bx bx-user"></i><span>Profile</span></a>
+							<li><a class="dropdown-item" href="{{route('admin.profile.index')}}"><i
+										class="bx bx-user"></i><span>Profile</span></a>
 							</li>
 							<li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
 							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
+							<li><a class="dropdown-item" href="javascript:;"><i
+										class='bx bx-home-circle'></i><span>Dashboard</span></a>
 							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
+							<li><a class="dropdown-item" href="javascript:;"><i
+										class='bx bx-dollar-circle'></i><span>Earnings</span></a>
 							</li>
 							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
 							</li>
@@ -695,7 +704,8 @@
 							<li>
 								<form action="{{ route('logout') }}" method="POST" id="logout-form">
 									@csrf
-									<a class="dropdown-item" href="javascript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+									<a class="dropdown-item" href="javascript:;"
+										onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 										<i class='bx bx-log-out-circle'></i><span>Logout</span>
 									</a>
 								</form>
@@ -776,6 +786,8 @@
 	<script src="{{ asset('plugins/sparkline-charts/jquery.sparkline.min.js')}}"></script>
 	<script src="{{ asset('plugins/jquery-knob/excanvas.js')}}"></script>
 	<script src="{{ asset('plugins/jquery-knob/jquery.knob.js')}}"></script>
+	<script src="{{ asset('plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
+	<script src="{{ asset('plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
 	<script>
 		$(function() {
 			$(".knob").knob();
@@ -784,6 +796,7 @@
 	<script src="{{ asset('js/index.js')}}"></script>
 	<!--app JS-->
 	<script src="{{ asset('js/app.js')}}"></script>
+	@stack('extra-scripts')
 </body>
 
 </html>

@@ -16,7 +16,8 @@ class UserController extends Controller
 
     public function index()
     {
-        return view("admin.profile", ['selected' => 'Profile']);
+        $users = User::all();
+        return view("admin.users", ['selected' => 'Users', 'users' => $users]);
     }
 
     /**
