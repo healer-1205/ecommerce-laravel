@@ -27,6 +27,10 @@
 							<div class="mt-3">
 								<h4>{{ auth()->user()->name }}</h4>
 							</div>
+							<div class="mt-3">
+								<button type="button" id="upload_avatar" class="btn btn-light px-5">Change Avatar</button>
+								<input type="file" id="file" name="avatar" hidden />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -58,7 +62,7 @@
 									<h6 class="mb-0">Change Password</h6>
 								</div>
 								<div class="col-sm-9">
-									<input type="password" name="password" id="password" class="form-control" value="" required />
+									<input type="password" name="password" class="form-control" value="" required />
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -66,11 +70,59 @@
 									<h6 class="mb-0">Password Confirm</h6>
 								</div>
 								<div class="col-sm-9">
-									<input type="password" name="confirm_password" class="form-control" id="confirm_password" value=""
-										required />
+									<input type="password" name="confirm_password" class="form-control" value="" required />
 									@if (Session::has('invalid'))
 									<small class="text-danger" id="wrong_password">{{ Session::get('invalid') }}</small>
 									@endif
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Shipping Address</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="shipping_address" class="form-control"
+										value="{{auth()->user()->shipping_address}}" required />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">IP</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="ip" class="form-control" value="{{auth()->user()->ip}}" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Country</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="country" class="form-control" value="{{auth()->user()->country}}" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">User Agent</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="user_agent" class="form-control" value="{{auth()->user()->user_agent}}" />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">User Agent</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="device" class="form-control" value="{{auth()->user()->device}}" disabled />
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Referee</h6>
+								</div>
+								<div class="col-sm-9">
+									<input type="text" name="referee" class="form-control" value="{{auth()->user()->referee}}" />
 								</div>
 							</div>
 							<div class="row">
@@ -86,5 +138,15 @@
 		</div>
 	</div>
 </div>
+
+@push('extra-scripts')
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#upload_avatar").on("click", function() {
+			$( "#file" ).trigger( "click" )
+		})
+	})
+</script>
+@endpush
 
 @endsection
