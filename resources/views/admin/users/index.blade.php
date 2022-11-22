@@ -2,22 +2,18 @@
 
 @section('content')
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-	<div class="breadcrumb-title pe-3">Tables</div>
+	<div class="breadcrumb-title pe-3">Users</div>
 	<div class="ps-3">
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb mb-0 p-0">
-				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+				<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-user"></i></a>
 				</li>
-				<li class="breadcrumb-item active" aria-current="page">Data Table</li>
 			</ol>
 		</nav>
 	</div>
-	<div class="ms-auto">
-		<a href="{{route('admin.users.create')}}"><button type="button" class="btn btn-primary px-5">Add</button></a>
-	</div>
 </div>
 
-<h6 class="mb-0 text-uppercase">DataTable Example</h6>
+<h6 class="mb-0 text-uppercase">Customer Data Table</h6>
 <hr />
 <div class="card">
 	<div class="card-body">
@@ -54,9 +50,7 @@
 						<td>
 							<div class="rox">
 								<div class="col text-center">
-									<a href="{{route('admin.users.edit', $user->id)}}"><i class='bx bx-pencil me-0'></i></a>
-									<a href="{{route('admin.users.show', $user->id)}}"><i class='bx bx-trash me-0'></i></a>
-									<a href="{{route('admin.users.destroy', $user->id)}}"><i class='bx bx-show me-0'></i></a>
+									<a href="{{route('admin.users.show', $user->id)}}"><i class='bx bx-show me-0'></i></a>
 								</div>
 							</div>
 						</td>
