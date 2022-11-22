@@ -24,7 +24,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 	<link href="{{ asset('css/app.css')}}" rel="stylesheet">
 	<link href="{{ asset('css/icons.css')}}" rel="stylesheet">
-
+	@stack('extra-css')
 	<title>Dashtreme</title>
 </head>
 
@@ -66,16 +66,19 @@
 						<div class="menu-title">Products</div>
 					</a>
 				</li>
-				<li>
-					<a href="javascript:;" class="has-arrow">
-						<div class="parent-icon"><i class='bx bx-cart'></i>
+				<li class={{$selected == "Review" ? "mm-active" : ""}}>
+					<a href="{{route('admin.review.index')}}">
+						<div class="parent-icon"><i class="bx bx-star"></i>
 						</div>
-						<div class="menu-title">eCommerce</div>
+						<div class="menu-title">Review</div>
 					</a>
-					<ul>
-						<li> <a href="ecommerce-orders.html"><i class="bx bx-right-arrow-alt"></i>Orders</a>
-						</li>
-					</ul>
+				</li>
+				<li class={{$selected == "Orders" ? "mm-active" : ""}}>
+					<a href="{{route('admin.review.index')}}">
+						<div class="parent-icon"><i class="bx bx-cart"></i>
+						</div>
+						<div class="menu-title">Orders</div>
+					</a>
 				</li>
 			</ul>
 			<!--end navigation-->
