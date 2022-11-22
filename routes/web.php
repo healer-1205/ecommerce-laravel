@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('/profile', ProfileController::class);
         Route::resource('/users', UserController::class);
         Route::resource('/products', ProductController::class);
+        Route::resource('/review', ReviewController::class);
     });
 });
